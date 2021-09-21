@@ -28,6 +28,7 @@ Then you have to connect the nunchuck to the arduino.
 | Yellow | A4 |
 | Green | 3.3v |
 | Red | GND |
+
 https://drive.google.com/file/d/1mG5OvNKQgYk-enxVBwAeopp7cNtc--WO/view?usp=sharing
 https://drive.google.com/file/d/19P9fyTnkYa96uxpV5z21OEeV9g-0wqVK/view?usp=sharing
 
@@ -45,11 +46,56 @@ Now we are ready to read the nunchuck's sensors and send MIDI control change com
 
 
 ## Serial to MIDI
-Because arduino UNO doesn't support MIDI over USB connection we have to use a middleware software named The Hairless MIDI.
+Because Arduino UNO doesn't support MIDI over USB connection we have to use a middleware software named The Hairless MIDI, which converts MIDI conmmands from the serial port (arduino usb) and transmmits them to a virtual MIDI device.
+Just download and install the software:
 https://projectgus.github.io/hairless-midiserial/
 
-
 ## Virtual MIDI Device (for your DAW)
+Another software we will need is a virtual MIDI device which will be recognised and "visible" from your DAW so that you can use it as a MIDI remote control source.
+The DAW will recognize it as a normal MIDI device.
+There are many applications for this use but in this case we will use loopMIDI.
+Just download and install the software:
+https://www.tobias-erichsen.de/software/loopmidi.html
 
-## Setup MIDI Controllers
+## Orchestrate the software
+-   Make sure arduino is connected to the PC and that the nunchuck is properly connected to the arduino.
+-   Run loopMIDI. There should be a default virtual MIDI device so we will use this one (**loopMIDI Port**).
+-   Run The HairlessMIDI. Choose your arduino com port on the left side and on the right side choose **loopMIDI Port** as **MIDI Out**.
+-   Open your DAW and in your preferences choose the virtual MIDI device **loopMIDI Port**.
 
+
+## Usage Instructions
+Using your DAW's learn function you can map any parameter to any of the nunchuck's 5 channels, joystick X-Y, accelerator X-Y-Z.
+
+**System Modes**
+The system has 2 modes, Play and Setup. When you boot the arduino, the system is in the Play mode. 
+To enter Setup mode press and hold button C, then hold Z and the **push** the joystick Y axis to the end. The onboard led sholud blink slowly 5 times
+To exit Setup mode press and hold button C, then hold Z and the **pull** the joystick Y axis to the end. The onboard led sholud blink quickly 5 times
+
+### Setup Mode
+- Bring your DAW in learning mode and choose a parameter to map.
+- You can choose which nunchuck channel to assign by using button **Z**, which cycles through all available channels.
+- For each channel chosen, the led blinks accordingly.
+- To assign the selected channel to the DAW's parameter press button **C**. 
+
+| Nunchuck Channel | Times Led Blinks |
+| ------ | ------ |
+| Joystick X (initial) | 1|
+| Joystick Y | 2|
+| Accelerator X | 3|
+| Accelerator Y | 4|
+| Accelerator Z | 5|
+
+### Play Mode
+By Holding the **C** button the system starts to send the MIDI control change commands to your DAW throught the virtual MIDI device.
+If you leave the **C** button every control change command stops.
+By default the accelerometer channels are ignored. You can cycle through the channels you want to play with using button **Z**.
+The led will blink accordingly.
+
+| Accelerator Channel | Times Led Blinks |
+| ------ | ------ |
+| Off (default) | 1|
+|  X | 2|
+|  Y | 3|
+|  Z | 4|
+| XYZ | 5|
