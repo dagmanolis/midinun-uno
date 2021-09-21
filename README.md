@@ -22,7 +22,7 @@ First of all you have to modify the nunchuk so it can connect to arduino with ea
     https://drive.google.com/file/d/1mi1AaBxKj4iAN5-v_ls14wkiqmwjNLV8/view?usp=sharing
 
 Then you have to connect the nunchuk to the arduino.
-| Cable Color | Plug Position Arduino Pin |
+| Cable Color | Plug Position | Arduino Pin |
 | ------ | ------ | ------ |
 | White | 6 | A5 |
 | Yellow | 1 |  A4 |
