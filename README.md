@@ -22,12 +22,12 @@ First of all you have to modify the nunchuk so it can connect to arduino with ea
     https://drive.google.com/file/d/1mi1AaBxKj4iAN5-v_ls14wkiqmwjNLV8/view?usp=sharing
 
 Then you have to connect the nunchuk to the arduino.
-| Cable Color | Arduino Pin |
-| ------ | ------ |
-| White | A5 |
-| Yellow | A4 |
-| Green | 3.3v |
-| Red | GND |
+| Cable Color | Plug Position Arduino Pin |
+| ------ | ------ | ------ |
+| White | 6 | A5 |
+| Yellow | 1 |  A4 |
+| Green | 3 | 3.3v |
+| Red | 4 | GND |
 
 https://drive.google.com/file/d/1mG5OvNKQgYk-enxVBwAeopp7cNtc--WO/view?usp=sharing
 https://drive.google.com/file/d/19P9fyTnkYa96uxpV5z21OEeV9g-0wqVK/view?usp=sharing
@@ -47,14 +47,20 @@ Now we are ready to read the nunchuk's sensors and send MIDI control change comm
 
 ## Serial to MIDI
 Because Arduino UNO doesn't support MIDI over USB connection we have to use a middleware software named The Hairless MIDI, which converts MIDI conmmands from the serial port (arduino usb) and transmmits them to a virtual MIDI device.
+
 Just download and install the software:
+
 https://projectgus.github.io/hairless-midiserial/
 
 ## Virtual MIDI Device (for your DAW)
 Another software we will need is a virtual MIDI device which will be recognised and "visible" from your DAW so that you can use it as a MIDI remote control source.
+
 The DAW will recognize it as a normal MIDI device.
+
 There are many applications for this use but in this case we will use loopMIDI.
+
 Just download and install the software:
+
 https://www.tobias-erichsen.de/software/loopmidi.html
 
 ## Orchestrate the software
@@ -68,11 +74,15 @@ https://www.tobias-erichsen.de/software/loopmidi.html
 Using your DAW's learn function you can map any parameter to any of the nunchuk's 5 channels, joystick X-Y, accelerator X-Y-Z.
 
 **System Modes**
+
 The system has 2 modes, Play and Setup. When you boot the arduino, the system is in the Play mode. 
-To enter Setup mode press and hold button C, then hold Z and the **push** the joystick Y axis to the end. The onboard led sholud blink slowly 5 times
-To exit Setup mode press and hold button C, then hold Z and the **pull** the joystick Y axis to the end. The onboard led sholud blink quickly 5 times
+
+To enter Setup mode press and hold button **C**, then hold **Z** and the **push** the joystick Y axis to the end. The onboard led sholud blink slowly 5 times
+
+To exit Setup mode press and hold button **C**, then hold **Z** and the **pull** the joystick Y axis to the end. The onboard led sholud blink quickly 5 times
 
 ### Setup Mode
+
 - Bring your DAW in learning mode and choose a parameter to map.
 - You can choose which nunchuk channel to assign by using button **Z**, which cycles through all available channels.
 - For each channel chosen, the led blinks accordingly.
@@ -87,9 +97,13 @@ To exit Setup mode press and hold button C, then hold Z and the **pull** the joy
 | Accelerator Z | 5|
 
 ### Play Mode
+
 By Holding the **C** button the system starts to send the MIDI control change commands to your DAW throught the virtual MIDI device.
+
 If you leave the **C** button every control change command stops.
+
 By default the accelerometer channels are ignored. You can cycle through the channels you want to play with using button **Z**.
+
 The led will blink accordingly.
 
 | Accelerator Channel | Times Led Blinks |
