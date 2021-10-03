@@ -1,9 +1,6 @@
 # midinun-uno
-Arduino Uno MIDI control with a Wii Nunchuk, over USB
-
-Use your Wii Nunchuk's accelerometer and joystick as a MIDI controller for your DAW, using Arduino UNO.
-Both original and OEM nunchuks will work.
-> This tutorial is for Windows only, if you are using linux or mac you have to find an alternative to The Hairless Midi and the virtual MIDI device for you DAW (both are described below)
+Use your Wii Nunchuk's accelerometer and joystick as a MIDI controller for your DAW, using Arduino UNO or Nano.
+(Both original and OEM nunchuks will work.)
 
 ## Connect nunchuk to arduino
 
